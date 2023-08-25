@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { graphqlHTTP } = require('express-graphql');
 const connectDB = require('./db');
 const schema = require('./schemas');
@@ -17,9 +18,13 @@ app.use (
   })
 );
 
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+});
 
-app.listen(4007, () => {
-  console.log('Server is running on port 4007..');
+
+app.listen(4008, () => {
+  console.log('Server is running on port 4008..');
 });
 
 
