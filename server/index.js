@@ -1,6 +1,10 @@
+const Mission = require('.models/Mission');
+const User = require('.models/User');
+
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const connectDB = require('./db');
+const schema = require('./schemas');
 
 const app = express();
 
@@ -17,8 +21,8 @@ app.use (
 );
 
 
-app.listen(4002, () => {
-  console.log('Server is running on port 4002..');
+app.listen(4003, () => {
+  console.log('Server is running on port 4003..');
 });
 
 
