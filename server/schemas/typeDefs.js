@@ -1,12 +1,14 @@
-const typeDefs = `
-type User {
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
+  type User {
     _id: ID
     username: String
     password: String
     favoriteMissions: [Mission!]!
-}
+  }
 
-type Mission {
+  type Mission {
     _id: ID!
     rocketType: String!
     missionPayload: String!
@@ -18,29 +20,24 @@ type Mission {
     missionBrief: String
     missionObjective: String
     crewDetails: [String]
-}
+  }
 
-type MissionMedia {
+  type MissionMedia {
     videos: [String]
     images: [String]
-}
+  }
 
-type Auth {
-    token: ID!
-    user: User
-}
-
-type Query {
+  type Query {
     searchMission(mission: String!): Mission
     me: User
-}
+  }
 
-type Mutation {
+  type Mutation {
     addUser(username: String!, password: String!): User
     addFavoriteMission(userId: ID!, missionId: ID!): User
     removeUser(userId: ID!): User
     removeFavoriteMission(userId: ID!, missionId: ID!): User
-}
+  }
 `;
 
 module.exports = typeDefs;
