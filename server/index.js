@@ -1,6 +1,3 @@
-const Mission = require('.models/Mission');
-const User = require('.models/User');
-
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const connectDB = require('./db');
@@ -21,8 +18,8 @@ app.use (
 );
 
 
-app.listen(4003, () => {
-  console.log('Server is running on port 4003..');
+app.listen(4007, () => {
+  console.log('Server is running on port 4007..');
 });
 
 
