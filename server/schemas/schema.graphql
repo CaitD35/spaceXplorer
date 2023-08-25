@@ -1,0 +1,14 @@
+type Mission {
+  id: ID!
+  name: String!
+  rocketType: String!
+  missionPayload: String!
+  launchDate: String!
+  launchLocation: String!
+  status: String!
+}
+
+
+type Query {
+  missions: [Mission]
+  }
