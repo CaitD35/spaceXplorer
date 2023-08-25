@@ -1,12 +1,29 @@
-const express = require('express');
+const Mission = require('.models/Mission');
+const User = require('.models/User');
 
+const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
 const connectDB = require('./db');
+const schema = require('./schemas');
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
 
-app.listen(4002, () => {
-  console.log('Server is running on port 4002..');
+// Middleware
+app.use (
+  '/graphql',
+   graphqlHTTP({
+  schema,
+  graphiql: true,
+  })
+);
+
+
+app.listen(4003, () => {
+  console.log('Server is running on port 4003..');
 });
+
+
+
