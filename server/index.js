@@ -26,9 +26,9 @@ const startServer = async () => {
   });
 
   // Start Express server
-  app.listen(4009, () => {
-    console.log(`Server is running on port 4009..`);
-    console.log(`GraphQL Server ready at http://localhost:4009${server.graphqlPath}`);
+  app.listen(3000, () => {
+    console.log(`Server is running on port 3000..`);
+    console.log(`GraphQL Server ready at http://localhost:3000${server.graphqlPath}`);
   });
 };
 
