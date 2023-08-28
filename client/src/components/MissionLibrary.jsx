@@ -8,7 +8,8 @@ const MissionLibrary = () => {
   const { loading, error, data } = useQuery(GET_MISSIONS);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error}</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!data || !data.missions) return <p>No data available</p>;
 
   return (
     <div>
