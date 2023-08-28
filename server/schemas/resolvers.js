@@ -3,26 +3,36 @@ const User = require('../models/User');
 
 const resolvers = {
   Query: {
-    missions: async () => {
-      return await Mission.find({});
+   searchMission: async (parent, { mission}) => {
+    return await Mission.findOne({ name: mission });
     },
-    mission: async (parent, args) => {
-      return await Mission.findById(args.id);
-    },
-    user: async (parent, args) => {
-      return await User.findById(args.id);
+    me: async (parent, args, context) => {
+      const userID = context.user._id;
+      return await User.findById(userID);
     },
   },
   Mutation: {
-    addMission: async (parent, args) => {
-      const newMission = new Mission(args);
-      return await newMission.save();
-    },
     addUser: async (parent, args) => {
       const newUser = new User(args);
       return await newUser.save();
     },
-  },
+
+    addFavoriteMission: async (parent, { userID, missionID }) => {
+      return await User.findOneAndUpdate(
+        { _id: userID },
+        { $addToSet: { favoriteMissions: missionID } },
+        { new: true }
+      );
+    },
+    
+    removeFavoriteMission: async (parent, { userID, missionID }) => {
+      return await User.findOneAndUpdate(
+        { _id: userID },
+        { $pull: { favoriteMissions: missionID } },
+        { new: true }
+      );
+    }
+  }
 };
 
 module.exports = resolvers;
