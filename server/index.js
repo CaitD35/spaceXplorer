@@ -1,31 +1,36 @@
 const express = require('express');
 const path = require('path');
-const { graphqlHTTP } = require('express-graphql');
+const { ApolloServer } = require('apollo-server-express');
 const connectDB = require('./db');
-const schema = require('./schemas');
+const typeDefs = require('./schemas/typeDefs');
+const resolvers = require('./schemas/resolvers');
 
 const app = express();
 
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use (
-  '/graphql',
-   graphqlHTTP({
-  schema,
-  graphiql: true,
-  })
-);
+const startServer = async () => {
+  // Initialize Apollo Server
+  const server = new ApolloServer({ typeDefs, resolvers });
+  
+  // Start the server
+  await server.start();
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/index.html'));
-});
+  // Apply Apollo GraphQL middleware and set the path to /graphql
+  server.applyMiddleware({ app, path: '/graphql' });
 
+  // Serve static files
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/index.html'));
+  });
 
-app.listen(4009, () => {
-  console.log('Server is running on port 4009..');
-});
+  // Start Express server
+  app.listen(3000, () => {
+    console.log(`Server is running on port 3000..`);
+    console.log(`GraphQL Server ready at http://localhost:3000${server.graphqlPath}`);
+  });
+};
 
-
-
+// Run the async function to start the server
+startServer();

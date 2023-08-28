@@ -4,22 +4,29 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String
-    password: String
+    email: String
     favoriteMissions: [Mission!]!
   }
 
   type Mission {
     _id: ID!
     rocketType: String!
-    missionPayload: String!
+    payload: String!  # Updated from 'missionPayload' to 'payload'
     launchDate: String!
     launchLocation: String!
     landingLocation: String!
-    status: String!
+    status: Status!  # Using the 'Status' enum
     media: MissionMedia
     missionBrief: String
     missionObjective: String
     crewDetails: [String]
+  }
+
+  # Added this enum to match with MongoDB model
+  enum Status {
+    Success
+    Failure
+    Pending
   }
 
   type MissionMedia {
@@ -33,7 +40,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password: String!): User
+    addUser(username: String!, email: String!, password: String!): User  # Added 'email'
     addFavoriteMission(userId: ID!, missionId: ID!): User
     removeUser(userId: ID!): User
     removeFavoriteMission(userId: ID!, missionId: ID!): User

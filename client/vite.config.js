@@ -1,16 +1,7 @@
-export default{
-    server:{
-        proxy:{
-            '/graphql':{
-                target:'http://localhost:4007',
-                changeOrigin:true },
-        },
-        fs:{
-            strict:false,
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+export default defineConfig({
+  plugins: [react()],
 
-    },
-
-    historyAPIFallback:true,
-    },
-};
+})
