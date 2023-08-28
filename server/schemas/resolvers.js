@@ -3,34 +3,39 @@ const User = require('../models/User');
 
 const resolvers = {
   Query: {
-   searchMission: async (parent, { mission}) => {
-    return await Mission.findOne({ name: mission });
+    searchMission: async (_, { mission }) => {
+      const foundMission = await Mission.findOne({ name: mission });
+      if (!foundMission) throw new Error('Mission not found');
+      return foundMission;
     },
-    me: async (parent, args, context) => {
-      const userID = context.user._id;
-      return await User.findById(userID);
+    me: async (_, __, { user }) => {
+      if (!user) throw new Error('You are not authenticated');
+      return await User.findById(user._id);
     },
   },
   Mutation: {
-    addUser: async (parent, args) => {
-      const newUser = new User(args);
+    addUser: async (_, { username, email, password }) => {
+      // Hashing function needs to be implemented
+      const newUser = new User({ username, email, password });
       return await newUser.save();
     },
-
-    addFavoriteMission: async (parent, { userID, missionID }) => {
-      return await User.findOneAndUpdate(
-        { _id: userID },
+    addFavoriteMission: async (_, { userID, missionID }) => {
+      const updatedUser = await User.findByIdAndUpdate(
+        userID,
         { $addToSet: { favoriteMissions: missionID } },
         { new: true }
       );
+      if (!updatedUser) throw new Error('User not found');
+      return updatedUser;
     },
-    
-    removeFavoriteMission: async (parent, { userID, missionID }) => {
-      return await User.findOneAndUpdate(
-        { _id: userID },
+    removeFavoriteMission: async (_, { userID, missionID }) => {
+      const updatedUser = await User.findByIdAndUpdate(
+        userID,
         { $pull: { favoriteMissions: missionID } },
         { new: true }
       );
+      if (!updatedUser) throw new Error('User not found');
+      return updatedUser;
     }
   }
 };
