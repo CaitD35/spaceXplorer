@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { Mission, User } = require('../models');
 
 const resolvers = {
@@ -51,35 +52,37 @@ const resolvers = {
         createUserProfile: async (parent, { userProfile }) => {
             return User.create(userProfile);
         },
-    },
+=======
+const Mission = require('../models/Mission');
+const User = require('../models/User');
 
-    // Resolvers for Mission type fields
-    Mission: {
-        rocket: (mission) => {
-            return mission.rocketType;
-        },
-        payload: (mission) => {
-            return mission.payload;
-        },
-        launchAndLanding: (mission) => {
-            return {
-                launchLocation: mission.launchLocation,
-                landingLocation: mission.landingLocation,
-            };
-        },
-        media: (mission) => {
-            return mission.media;
-        },
-        status: (mission) => {
-            return mission.success ? 'Success' : 'Failure';
-        },
-        objective: (mission) => {
-            return mission.objective;
-        },
-        crewDetails: (mission) => {
-            return mission.crew;
-        },
+const resolvers = {
+  Query: {
+    missions: async () => {
+      return await Mission.find({});
     },
+    mission: async (parent, args) => {
+      return await Mission.findById(args.id);
+>>>>>>> 98b31778488cbf3b9573e615aa715851fc15faaa
+    },
+    user: async (parent, args) => {
+      return await User.findById(args.id);
+    },
+  },
+  Mutation: {
+    addMission: async (parent, args) => {
+      const newMission = new Mission(args);
+      return await newMission.save();
+    },
+    addUser: async (parent, args) => {
+      const newUser = new User(args);
+      return await newUser.save();
+    },
+  },
 };
 
+<<<<<<< HEAD
 module.exports = resolvers 
+=======
+module.exports = resolvers;
+>>>>>>> 98b31778488cbf3b9573e615aa715851fc15faaa
