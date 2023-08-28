@@ -1,4 +1,4 @@
-const { Mission, UpcomingMission, User, Favorite } = require('../models');
+const { Mission, User } = require('../models');
 
 const resolvers = {
     Query: {
@@ -17,7 +17,7 @@ const resolvers = {
             const missions = await Mission.find(query);
 
             if (order === 'chronological') {
-                missions.sort((a, b) => new Date(a.launchDate) - new Date(b.launchDate));
+                missions.sort(() => new Date(launchDate) - new Date(launchDate));
             }
 
             return missions;
@@ -26,27 +26,27 @@ const resolvers = {
         missionDetails: async (parent, { missionId }) => {
             return Mission.findById(missionId);
         },
-        // Query for upcoming missions
-        upcomingMissions: async () => {
-            return UpcomingMission.find({});
-        },
-        // Query for user's favorite missions
-        userFavorites: async (parent, { userId }) => {
-            const favorites = await Favorite.find({ userId });
-            const missionIds = favorites.map(fav => fav.missionId);
-            return Mission.find({ '_id': { $in: missionIds } });
-        },
+        // // Query for upcoming missions
+        // upcomingMissions: async () => {
+        //     return UpcomingMission.find({});
+        // },
+        // // Query for user's favorite missions
+        // userFavorites: async (parent, { userId }) => {
+        //     const favorites = await Favorite.find({ userId });
+        //     const missionIds = favorites.map(fav => fav.missionId);
+        //     return Mission.find({ '_id': { $in: missionIds } });
+        // },
     },
 
     Mutation: {
-        // Mutation to add a mission to user's favorites
-        addFavorite: async (parent, { userId, missionId }) => {
-            return Favorite.create({ userId, missionId });
-        },
-        // Mutation to remove a mission from user's favorites
-        removeFavorite: async (parent, { userId, missionId }) => {
-            return Favorite.findOneAndDelete({ userId, missionId });
-        },
+        // // Mutation to add a mission to user's favorites
+        // addFavorite: async (parent, { userId, missionId }) => {
+        //     return Favorite.create({ userId, missionId });
+        // },
+        // // Mutation to remove a mission from user's favorites
+        // removeFavorite: async (parent, { userId, missionId }) => {
+        //     return Favorite.findOneAndDelete({ userId, missionId });
+        // },
         // Mutation to create a user profile
         createUserProfile: async (parent, { userProfile }) => {
             return User.create(userProfile);
@@ -82,4 +82,4 @@ const resolvers = {
     },
 };
 
-module.exports = resolvers;
+module.exports = resolvers 
