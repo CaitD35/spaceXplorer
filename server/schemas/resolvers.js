@@ -11,7 +11,7 @@ const resolvers = {
     mission: async (parent, args) => {
       return await Mission.findById(args.id);
     },
-    user: async (parent, args) => {
+    me: async (parent, args) => {
       return await User.findById(args.id);
     },
   },
