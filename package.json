@@ -1,23 +1,21 @@
 {
-  "name": "spacexplorer",
+  "name": "SpaceXplorer",
   "version": "1.0.0",
-  "description": "History and mission explorer",
+  "description": "This is my fresh start.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "install": "cd client && npm i && cd ../server && npm i",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@apollo/client": "^3.7.14",
-    "@apollo/server": "^4.7.1",
-    "apollo-server-express": "^3.12.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "graphql": "16.6",
-    "mongoose": "^7.4.4",
-    "react-router-dom": "^6.15.0"
+
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
 }

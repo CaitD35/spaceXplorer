@@ -8,9 +8,11 @@ const resolvers = {
       if (!foundMission) throw new Error('Mission not found');
       return foundMission;
     },
-    me: async (_, __, { user }) => {
-      if (!user) throw new Error('You are not authenticated');
-      return await User.findById(user._id);
+    mission: async (parent, args) => {
+      return await Mission.findById(args.id);
+    },
+    me: async (parent, args) => {
+      return await User.findById(args.id);
     },
   },
   Mutation: {
