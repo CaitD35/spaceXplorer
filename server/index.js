@@ -4,8 +4,15 @@ const { ApolloServer } = require('apollo-server-express');
 const connectDB = require('./db');
 const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
+const cors = require('cors'); 
 
 const app = express();
+
+// Enable cors
+app.use(cors({
+  origin: 'http://localhost:5174',  
+  credentials: true  
+}));
 
 // Connect to MongoDB
 connectDB();
@@ -18,7 +25,7 @@ const startServer = async () => {
   await server.start();
 
   // Apply Apollo GraphQL middleware and set the path to /graphql
-  server.applyMiddleware({ app, path: '/graphql' });
+  server.applyMiddleware({ app, path: '/graphql', cors: false }); // Disable Apollo's built-in cors to use the package
 
   // Serve static files
   app.get('*', (req, res) => {
@@ -32,5 +39,5 @@ const startServer = async () => {
   });
 };
 
-// Run the async function to start the server
+
 startServer();
