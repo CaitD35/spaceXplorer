@@ -1,21 +1,22 @@
-const { gql } = require('apollo-server-express');
 
-const typeDefs = gql`
+const typeDefs = `
   type User {
     _id: ID
     username: String
     email: String
-    favoriteMissions: [Mission!]!
+    favoriteMissions: [Mission]
   }
 
   type Mission {
     _id: ID!
-    rocketType: String!
-    payload: String!  
-    launchDate: String!
-    launchLocation: String!
-    landingLocation: String!
-    status: Status! 
+    rocketType: String
+    payload: String  
+    # Updated from 'missionPayload' to 'payload'
+    launchDate: String
+    launchLocation: String
+    landingLocation: String
+    status: String
+    # Using the 'Status': String
     media: MissionMedia
     missionBrief: String
     missionObjective: String
@@ -23,11 +24,7 @@ const typeDefs = gql`
   }
 
   # Added this enum to match with MongoDB model
-  enum Status {
-    Success
-    Failure
-    Pending
-  }
+  #
 
   type MissionMedia {
     videos: [String]
@@ -37,10 +34,12 @@ const typeDefs = gql`
   type Query {
     searchMission(mission: String!): Mission
     me: User
+    mission(mission: String!): Mission
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): User  # Added 'email'
+    addUser(username: String!, email: String!, password: String!): User  
+    # Added 'email'
     addFavoriteMission(userId: ID!, missionId: ID!): User
     removeUser(userId: ID!): User
     removeFavoriteMission(userId: ID!, missionId: ID!): User
