@@ -5,12 +5,15 @@ const connectDB = require('./db');
 const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
 const cors = require('cors'); 
+const User = require('./models/User');
+
+
 
 const app = express();
 
 // Enable cors
 app.use(cors({
-  origin: 'http://localhost:5174',  
+  origin: 'http://localhost:5173',  
   credentials: true  
 }));
 

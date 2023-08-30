@@ -11,11 +11,11 @@ const typeDefs = gql`
   type Mission {
     _id: ID!
     rocketType: String!
-    payload: String!  # Updated from 'missionPayload' to 'payload'
+    payload: String!  
     launchDate: String!
     launchLocation: String!
     landingLocation: String!
-    status: Status!  # Using the 'Status' enum
+    status: Status! 
     media: MissionMedia
     missionBrief: String
     missionObjective: String
