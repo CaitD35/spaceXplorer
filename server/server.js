@@ -13,10 +13,6 @@ const PORT = process.env.PORT || 4445;
 const app = express();
 
 
-// ****** This is for apollo version 4 *****
-// Please use apollo 4 version and associated auth file in order to use the latest Apollo
-// Apollo plugin has been changed to use hooks in order to better control plugin access
-// If you want to use version 3 from class, do not copy this code
 const server = new ApolloServer({
   typeDefs,
   resolvers,

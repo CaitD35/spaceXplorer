@@ -6,6 +6,7 @@ mutation addUser($username: String!) {
         _id
         username
         email
+        password
         favoriteMissions
     }
 }`;
