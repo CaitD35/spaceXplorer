@@ -1,13 +1,19 @@
 import { gql } from '@apollo/client';
 
 export const GET_MISSIONS = gql`
-  query GetMissions {
+  query searchMission {
     missions {
       id
-      name
       rocketType
+      payload
       launchDate
+      launchLocation
+      landingLocation
       status
+      media
+      missionBrief
+      missionObjective
+      crewDetails
 
     }
   }
@@ -17,16 +23,16 @@ export const GET_MISSIONS = gql`
   query GetMissionDetail($id: ID!) {
     mission(id: $id) {
       id
-      name
       rocketType
+      payload
       launchDate
       launchLocation
       landingLocation
       status
-      images
-      videos
-      objective
-      crewDetails 
+      media
+      missionBrief
+      missionObjective
+      crewDetails
 
     }
   }
@@ -43,4 +49,13 @@ export const GET_NEXT_MISSION = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+query me {
+  me {
+    _id
+    username
+    email
+    favoriteMissions
+  }
+}`
 
