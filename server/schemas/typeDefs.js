@@ -11,12 +11,10 @@ const typeDefs = `
     _id: ID!
     rocketType: String
     payload: String  
-    # Updated from 'missionPayload' to 'payload'
     launchDate: String
     launchLocation: String
     landingLocation: String
     status: String
-    # Using the 'Status': String
     media: MissionMedia
     missionBrief: String
     missionObjective: String
@@ -39,7 +37,6 @@ const typeDefs = `
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): User  
-    # Added 'email'
     addFavoriteMission(userId: ID!, missionId: ID!): User
     removeUser(userId: ID!): User
     removeFavoriteMission(userId: ID!, missionId: ID!): User

@@ -7,6 +7,8 @@ import UserProfile from './components/UserProfile';
 import NavBar from './components/NavBar';
 import MissionDetail from './components/MissionDetail';
 import Countdown from './components/Countdown';
+import './App.css';
+
 
 
 const App = () => {
@@ -17,6 +19,7 @@ const App = () => {
           <h1>SpaceXplorer</h1>
           <Countdown />
           <NavBar />
+          
         </header>
         <main>
           <Routes>

@@ -1,5 +1,7 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client'; // Note the new import
+import { ReactDom } from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { createRoot } from 'react-dom/client'; 
 import App from './App';
 import { ApolloProvider } from '@apollo/client';
 import client from './apolloClient';

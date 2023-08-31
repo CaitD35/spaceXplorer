@@ -6,6 +6,9 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
+          <Link to="/login">Login/Signup</Link>
+        </li>
+        <li>
           <Link to="/">Mission Library</Link>
         </li>
         <li>
