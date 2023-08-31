@@ -1,15 +1,30 @@
-// import React from "react";
-// import { useQuery } from "@apollo/client";
-// import Countdown from "./Countdown";
-
 import React, { useEffect, useState } from 'react';
 
 const UpcomingMissions = () => {
-  const [seconds, setSeconds] = useState(10);
+  const [countdown, setCountdown] = useState('');
+  const [detailMission, setDetailMission] = useState('');
+  const futureDate = new Date('December 31, 2024 00:00:00').getTime();
+  
+  const upcomingMissions = [
+    { id: 1, name: 'Starship - First Orbital Flight', date: '2024-01-01', details: 'First orbital flight of Starship' },
+    { id: 2, name: 'Dragon Resupply Mission', date: '2024-02-15', details: 'Resupply the ISS' },
+    { id: 3, name: 'Crewed Moon Landing', date: '2024-12-31', details: 'First crewed mission to the moon since Apollo 17' },
+    // ... add more missions here
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(prevSeconds => prevSeconds - 1);
+      const now = new Date().getTime();
+      const distance = futureDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      const countdownText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      
+      setCountdown(countdownText);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -18,28 +33,18 @@ const UpcomingMissions = () => {
   return (
     <div>
       <h1>Upcoming Missions</h1>
-      <p className="countdown">Next mission in: {seconds} seconds</p>
-      {/* ...more content */}
+      <p className="countdown">Next mission in: {countdown}</p>
+      <ul>
+        {upcomingMissions.map((mission) => (
+          <li key={mission.id} className="upcoming">
+            {mission.name} - {mission.date}
+            < button className = "details-button" onClick={() => setDetailMission(mission.id)}></button>
+            {detailMission === mission.id && <p>{mission.details}</p>}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-
 export default UpcomingMissions;
-
-// const UpcomingMissions = () => {
-//   const { loading, error, data } = useQuery(/* query for upcoming missions */);
-
-//   if (loading) return <p>Loading...</p>;
-//   if (error) return <p>Error : {error}</p>;
-
-//   return (
-//     <div>
-//       <Countdown />
-//       <h1>Upcoming Missions</h1>
-//       {/* add code to display upcoming missions */}
-//     </div>
-//   );
-// };
-
-// export default UpcomingMissions;
