@@ -58,3 +58,50 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+/* Profile Page */
+p {
+  font-size: 1em;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+/* Countdown timer */
+.countdown {
+  font-size: 1.5em;
+  color: #ff4500;
+}
+
+
+/* Space-themed Favorite and Unfavorite Buttons */
+button.favorite, button.unfavorite {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+button.favorite {
+  background: radial-gradient(circle, #ffd700, #ffcc00, #ffb600);
+  color: black;
+  box-shadow: 0 0 10px #ffd700, 0 0 40px #ffd700, 0 0 80px #ffd700;
+}
+
+button.favorite:hover {
+  transform: scale(1.1);
+}
+
+button.unfavorite {
+  background: radial-gradient(circle, #ccc, #bbb, #aaa);
+  color: black;
+  box-shadow: 0 0 10px #ccc, 0 0 40px #ccc, 0 0 80px #ccc;
+}
+
+button.unfavorite:hover {
+  transform: scale(1.1);
+}

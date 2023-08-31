@@ -20,6 +20,7 @@ const App = () => {
           <Countdown />
           <NavBar />
           
+          
         </header>
         <main>
           <Routes>
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/upcoming" element={<UpcomingMission />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/missiondetail/:id" element={<MissionDetail />} />
+          
           </Routes>
         </main>
       </div>
