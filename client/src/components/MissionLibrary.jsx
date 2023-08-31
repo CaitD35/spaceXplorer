@@ -1,12 +1,8 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { useQuery } from "@apollo/client";
-// import { GET_MISSIONS } from "../graphql/queries";
 
 import React, { useState } from 'react';
 
 const MissionLibrary = () => {
-  const missions = ['Mission 1', 'Mission 2', 'Mission 3'];
+  const missions = ['Falcon 9', 'Mission 2', 'Mission 3'];
   const [searchTerm, setSearchTerm] = useState('');
   const [favorites, setFavorites] = useState([]);
 
