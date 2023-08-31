@@ -5,6 +5,7 @@ import DetailedMission from './components/DetailedMission';
 import UpcomingMission from './components/UpcomingMissions';
 import UserProfile from './components/UserProfile';
 import NavBar from './components/NavBar';
+import LoginForm from './components/LoginForm';
 import MissionDetail from './components/MissionDetail';
 import Countdown from './components/Countdown';
 import './App.css';
@@ -24,6 +25,7 @@ const App = () => {
         </header>
         <main>
           <Routes>
+            <Route path="/login" element={<LoginForm />} />
             <Route path="/" element={<MissionLibrary />} />
             <Route path="/mission/:id" element={<DetailedMission />} />
             <Route path="/upcoming" element={<UpcomingMission />} />

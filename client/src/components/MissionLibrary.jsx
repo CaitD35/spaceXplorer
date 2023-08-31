@@ -1,25 +1,26 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { useQuery } from "@apollo/client";
-// import { GET_MISSIONS } from "../graphql/queries";
-
 import React, { useState } from 'react';
 
 const MissionLibrary = () => {
-  const missions = ['Mission 1', 'Mission 2', 'Mission 3'];
+  const missions = [
+    { id: 1, name: 'Falcon 1 - Maiden Flight', year: 2006 },
+    { id: 2, name: 'Falcon 1 - First Successful Flight', year: 2008 },
+    { id: 3, name: 'Falcon 9 - Maiden Flight', year: 2010 },
+    // ... add more missions here
+  ];
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [favorites, setFavorites] = useState([]);
 
   const toggleFavorite = mission => {
-    if (favorites.includes(mission)) {
-      setFavorites(favorites.filter(fav => fav !== mission));
+    if (favorites.includes(mission.name)) {
+      setFavorites(favorites.filter(fav => fav !== mission.name));
     } else {
-      setFavorites([...favorites, mission]);
+      setFavorites([...favorites, mission.name]);
     }
   };
 
   const filteredMissions = missions.filter(mission =>
-    mission.toLowerCase().includes(searchTerm.toLowerCase())
+    mission.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -32,23 +33,31 @@ const MissionLibrary = () => {
         onChange={e => setSearchTerm(e.target.value)}
       />
       <ul>
-        {filteredMissions.map((mission, index) => (
-          <li key={index}>
-            {mission}{' '}
+        {filteredMissions.map(mission => (
+          <li key={mission.id}>
+            {mission.name} ({mission.year}){' '}
             <button
-            className={favorites.includes(mission) ? 'unfavorite' : 'favorite'}
-            onClick={() => toggleFavorite(mission)}
-          >
-          {favorites.includes(mission) ? 'Unfavorite' : 'Favorite'}
+              className={favorites.includes(mission.name) ? 'unfavorite' : 'favorite'}
+              onClick={() => toggleFavorite(mission)}
+            >
+              {favorites.includes(mission.name) ? 'Unfavorite' : 'Favorite'}
             </button>
           </li>
         ))}
       </ul>
+      <h2>Favorites</h2>
+<ul>
+  {favorites.map((favorite, index) => (
+    <li key={index}>{favorite}</li>
+  ))}
+</ul>
+
     </div>
   );
 };
 
 export default MissionLibrary;
+
 
 
 
