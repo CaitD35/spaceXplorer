@@ -10,7 +10,7 @@ const MissionDetail = () => {
   });
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Err</p>;
 
   const { name, rocketType, missionPayload, launchDate, launchLocation, landingLocation, status, images, videos, objective, crewDetails } = data.mission;
 
