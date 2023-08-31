@@ -1,16 +1,29 @@
-import React from "react";
+// import React from "react";
 // import { useQuery } from "@apollo/client";
 // import Countdown from "./Countdown";
 
+import React, { useEffect, useState } from 'react';
+
 const UpcomingMissions = () => {
+  const [seconds, setSeconds] = useState(10);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
-      {/* <Countdown /> */}
       <h1>Upcoming Missions</h1>
-      {/* add code to display upcoming missions */}
+      <p className="countdown">Next mission in: {seconds} seconds</p>
+      {/* ...more content */}
     </div>
   );
 };
+
 
 export default UpcomingMissions;
 

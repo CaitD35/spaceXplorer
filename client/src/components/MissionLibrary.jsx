@@ -1,39 +1,55 @@
-import React from "react";
+// import React from "react";
 // import { Link } from "react-router-dom";
 // import { useQuery } from "@apollo/client";
 // import { GET_MISSIONS } from "../graphql/queries";
 
+import React, { useState } from 'react';
 
 const MissionLibrary = () => {
+  const missions = ['Mission 1', 'Mission 2', 'Mission 3'];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [favorites, setFavorites] = useState([]);
+
+  const toggleFavorite = mission => {
+    if (favorites.includes(mission)) {
+      setFavorites(favorites.filter(fav => fav !== mission));
+    } else {
+      setFavorites([...favorites, mission]);
+    }
+  };
+
+  const filteredMissions = missions.filter(mission =>
+    mission.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Mission Library</h1>
+      <input
+        type="text"
+        placeholder="Search missions"
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+      />
       <ul>
-        <li>
-          <a href="/mission/1">Mission 1</a>
-        </li>
-        <li>
-          <a href="/mission/2">Mission 2</a>
-        </li>
-        <li>
-          <a href="/mission/3">Mission 3</a>
-        </li>
-        <li>
-          <a href="/mission/4">Mission 4</a>
-        </li>
-        <li>
-          <a href="/mission/5">Mission 5</a>
-        </li>
-        <li>
-          <a href="/mission/6">Mission 6</a>
-        </li>
-
+        {filteredMissions.map((mission, index) => (
+          <li key={index}>
+            {mission}{' '}
+            <button
+            className={favorites.includes(mission) ? 'unfavorite' : 'favorite'}
+            onClick={() => toggleFavorite(mission)}
+          >
+          {favorites.includes(mission) ? 'Unfavorite' : 'Favorite'}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
 };
 
 export default MissionLibrary;
+
 
 
 // const MissionLibrary = () => {
