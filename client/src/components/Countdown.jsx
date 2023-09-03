@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_NEXT_MISSION } from '../graphql/queries';
+import { QUERY_NEXT_MISSION } from '../graphql/queries';
 
 const Countdown = () => {
   const [countdown, setCountdown] = useState(null);
-  const { loading, error, data } = useQuery(GET_NEXT_MISSION);
+  const { loading, error, data } = useQuery(QUERY_NEXT_MISSION);
 
   useEffect(() => {
     if (data) {
