@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_MISSION_DETAIL } from '../graphql/queries';
+import { QUERY_MISSION_DETAIL } from '../graphql/queries';
 
 const MissionDetail = () => {
   const { missionId } = useParams();
-  const { loading, error, data } = useQuery(GET_MISSION_DETAIL, {
+  const { loading, error, data } = useQuery(QUERY_MISSION_DETAIL, {
     variables: { id: missionId },
   });
 
