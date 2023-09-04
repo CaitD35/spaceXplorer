@@ -1,8 +1,8 @@
-nav {
+/* nav {
   background-color: #333;
   color: white;
   padding: 1rem;
-}
+} */
 
 nav ul {
   list-style: none;
@@ -14,18 +14,19 @@ nav ul li {
   margin: 0 15px;
 }
 
-
 /* General Page Style */
-div {
+/* div {
   margin: 20px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
+} */
 
 /* Page Titles */
 h1 {
-  color: #333;
+  color: #fdeeee;
+  font-weight: bold;
+  font-style: oblique;
 }
 
 
@@ -70,6 +71,11 @@ p {
 .countdown {
   font-size: 1.5em;
   color: #ff4500;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 
@@ -130,11 +136,6 @@ li {
   border-bottom: 1px solid #ccc;
 }
 
-.countdown {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
 li.upcoming {
   background-color: #f0f0f0;
   border-radius: 5px;
@@ -157,3 +158,28 @@ li.upcoming {
   box-shadow: 0px 0px 5px 2px #fff;  
 }
 
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #062138;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+main {
+  padding: 20px;
+}

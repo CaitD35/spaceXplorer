@@ -40,7 +40,7 @@ const MissionLibrary = () => {
               className={favorites.includes(mission.name) ? 'unfavorite' : 'favorite'}
               onClick={() => toggleFavorite(mission)}
             >
-              {favorites.includes(mission.name) ? 'Unfavorite' : 'Favorite'}
+              {favorites.includes(mission.name) ? '-' : '+'}
             </button>
           </li>
         ))}
