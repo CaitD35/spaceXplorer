@@ -1,4 +1,32 @@
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3em;
+  text-shadow: 0px, 4px, 6px, #000000;
+  text-align: center;
+  color: black;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+header h1:hover {
+  text-shadow: 0px, 4px, 6px, #000000;
+  text-align: center;
+  color: #271a1a;
+  background: -webkit-linear-gradient(#333, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav {
 /* nav {
+>>>>>>> main
   background-color: #333;
   color: white;
   padding: 1rem;
@@ -12,6 +40,39 @@ nav ul {
 
 nav ul li {
   margin: 0 15px;
+  position: relative;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+nav ul li a:hover {
+  color: #f4c542;
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li.active{
+  border-bottom: 2px solid #f4c542;
+}
+
+nav ul li a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #f4c542;
+  transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a {
+  text-shadow: 0 0 0 2px #333;
 }
 
 /* General Page Style */
@@ -49,7 +110,7 @@ label, input {
 
 button {
   padding: 0.5rem 1rem;
-  background-color: #007bff;
+  background-color: #0055ff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -57,7 +118,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0012b3;
 }
 
 /* Profile Page */
@@ -67,15 +128,47 @@ p {
   margin: 0.5rem 0;
 }
 
-/* Countdown timer */
-.countdown {
-  font-size: 1.5em;
-  color: #ff4500;
-  font-size: 1.5em;
+.user-profile-page {
+  background-image: url('./assets/images/spx27-launch.webp');
+  background-size: cover;
+  background-blend-mode: lighten;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile-page h1 {
+  color: white;
+  font-family: 'roboto', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+  font-weight: bold;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+.user-profile-page h2 {
+  color: white;
+  font-family: 'roboto', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
   font-weight: bold;
   font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+.user-profile-page ul {
+  color: white;
+  list-style: none;
   text-align: center;
-  margin-bottom: 20px;
+  font-family: 'roboto', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+/* Countdown timer */
+.countdown {
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 1.5em;
+  color: #cae1d5;
+
 }
 
 
@@ -134,10 +227,11 @@ li {
   padding: 10px;
   font-size: 1.2em;
   border-bottom: 1px solid #ccc;
+
 }
 
 li.upcoming {
-  background-color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.133);
   border-radius: 5px;
 }
 
@@ -156,30 +250,167 @@ li.upcoming {
   cursor: pointer;
   border-radius: 50%;  
   box-shadow: 0px 0px 5px 2px #fff;  
+  transform: scale(1.1);
 }
 
-body, h1, h2, h3, p {
-  margin: 0;
-  padding: 0;
+
+
+.mission-library h1 {
+  color: white;
+  font-family: 'roboto', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+  font-weight: bold;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+
 }
 
-body {
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+.mission-library {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
-header {
-  background-color: #062138;
-  color: #fff;
+.mission-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mission-card {
+  width: 300px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 20px 0;
 }
 
-header h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
+.mission-card img {
+  max-width: 100%;
+  height: auto;
 }
 
-main {
-  padding: 20px;
+ .mission-library p, .mission-library input, .mission-library button {
+  color: white; 
+  text-shadow: 2px 2px 4px #000000;
+  background-color: rgba(red, green, blue, alpha);
 }
+
+
+
+.video-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.video-button {
+  background-color: rgba(0, 255, 68, 0.624);
+  color: white;
+}
+
+.mission-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: green;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255,255,255,0.1);
+  color: #333;
+  font-size: 1.2em;
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Space-themed Button for User profile */
+
+.space-button {
+  background-color: #1e3d59;
+  color: #f4c542; 
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.space-button:hover {
+  background-color: #162b40;  
+}
+
+/* Stars */
+
+.mission-library {
+  background-image: url('./assets/images/earth-1756274_640.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white; 
+  text-shadow: 2px 2px 4px #000000;
+  
+}
+
+
+/* upcomimg missions */
+
+  .upcoming-missions-page {
+    color: white;
+    background-image: url('./assets/images/4k-falcon-9-rocket-spacex-cape-canaveral-wallpaper-preview.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  .upcoming {
+    color: white;
+    text-shadow: 3px, 3px, 4px, #000000;
+    font-family:  'roboto', sans-serif;
+  }
+
+.upcoming-missions-page h1 {
+  color: white;
+  font-family: 'roboto', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+  font-weight: bold;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+.mission-details {
+  color: #cae1d5;
+  text-shadow: 3px 3px 4px #000000;
+  font-family: 'roboto', sans-serif;
+  font-size-adjust: inherit;
+}
+
+/* LoginForm specific styles */
+input[type="text"], input[type="password"], input[type="email"] {
+  width: 300px;  
+}
+
+button[type="submit"] {
+  width: 300px;  
+}
+
