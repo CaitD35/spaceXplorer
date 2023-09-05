@@ -25,12 +25,14 @@ const App = () => {
         </header>
         <main>
           <Routes>
+            
             <Route path="/login" element={<LoginForm />} />
             <Route path="/" element={<MissionLibrary />} />
             <Route path="/mission/:id" element={<DetailedMission />} />
             <Route path="/upcoming" element={<UpcomingMission />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/missiondetail/:id" element={<MissionDetail />} />
+      
           
           </Routes>
         </main>
