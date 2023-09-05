@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-export const GET_MISSIONS = gql`
-  query searchMission {
+export const QUERY_MISSIONS = gql`
+  query Mission {
     missions {
       id
       rocketType
@@ -19,8 +19,8 @@ export const GET_MISSIONS = gql`
   }
 `;
 
-  export const GET_MISSION_DETAIL = gql`
-  query GetMissionDetail($id: ID!) {
+  export const QUERY_MISSION_DETAIL = gql`
+  query MissionDetail($id: ID!) {
     mission(id: $id) {
       id
       rocketType
@@ -38,8 +38,8 @@ export const GET_MISSIONS = gql`
   }
 `;
 
-export const GET_NEXT_MISSION = gql`
-  query GetNextMission {
+export const QUERY_NEXT_MISSION = gql`
+  query NextMission {
     nextMission {
       id
       name

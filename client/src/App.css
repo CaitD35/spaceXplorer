@@ -27,7 +27,7 @@ nav {
   background-color: #333;
   color: white;
   padding: 1rem;
-}
+} 
 
 nav ul {
   list-style: none;
@@ -72,14 +72,17 @@ nav ul li a {
   text-shadow: 0 0 0 2px #333;
 }
 
+nav ul li a {
+  text-shadow: 0 0 0 2px #333;
+}
 
 /* General Page Style */
-div {
+ div {
   margin: 20px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
+} 
 
 /* Page Titles */
 h1 {
@@ -225,11 +228,6 @@ li {
 
 }
 
-.countdown {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
 li.upcoming {
   background-color: rgba(255, 255, 255, 0.133);
   border-radius: 5px;
@@ -252,6 +250,7 @@ li.upcoming {
   box-shadow: 0px 0px 5px 2px #fff;  
   transform: scale(1.1);
 }
+
 
 
 .mission-library h1 {
@@ -412,3 +411,5 @@ input[type="text"], input[type="password"], input[type="email"] {
 button[type="submit"] {
   width: 300px;  
 }
+
+
