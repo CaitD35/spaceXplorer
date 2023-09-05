@@ -403,3 +403,12 @@ li.upcoming {
   font-family: 'roboto', sans-serif;
   font-size-adjust: inherit;
 }
+
+/* LoginForm specific styles */
+input[type="text"], input[type="password"], input[type="email"] {
+  width: 300px;  
+}
+
+button[type="submit"] {
+  width: 300px;  
+}
